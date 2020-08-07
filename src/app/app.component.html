@@ -1,0 +1,22 @@
+<div class="container">
+<div class="form">
+  <input placeholder="enter item" [(ngModel)]="item">
+  <button (click)="addTodo()">Add</button>
+</div>
+<div class="showTodoList mt-5">
+  <div *ngIf="todoList.length == 0; else elseBlock">
+    <p class="text-center">Currently you dont have a todoList, please add your todoList</p>
+  </div>
+  <ng-template #elseBlock>
+    <ul class="list-group mt-3" *ngFor="let todo of todoList; let i=index">
+      <li class="list-group-item" style="display:flex;justify-content:space-between">
+        <div class="form-group form-check mt-3">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        </div>
+        {{todo.item}}
+        <i class="fa fa-trash" aria-hidden="true" (click)="delete(i)"></i>
+      </li>
+    </ul>
+  </ng-template>
+</div>
+</div>
